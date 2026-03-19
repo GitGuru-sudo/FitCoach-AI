@@ -14,6 +14,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
   type User,
 } from "firebase/auth";
@@ -114,6 +115,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     setAuthError("");
     googleProvider.setCustomParameters({ prompt: "select_account" });
+
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches) {
+      await signInWithRedirect(auth, googleProvider as GoogleAuthProvider);
+      return;
+    }
+
     await signInWithPopup(auth, googleProvider as GoogleAuthProvider);
   };
 

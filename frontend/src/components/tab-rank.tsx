@@ -3,6 +3,7 @@
 import { Crown, Medal, TrendingUp, Trophy } from "lucide-react";
 
 import { formatPoints, getLeagueName } from "@/components/dashboard-utils";
+import { getAllowedAvatar } from "@/lib/avatar-presets";
 import type { AppUser, LeaderboardEntry, StatsPayload } from "@/types";
 
 type TabRankProps = {
@@ -97,7 +98,7 @@ export const TabRank = ({ activeUser, statsPayload, progressPercent }: TabRankPr
 
             return (
               <article key={entry._id} className={classes}>
-                <img src={entry.avatar} alt={entry.username} className="podium-avatar" />
+                <img src={getAllowedAvatar(entry.avatar)} alt={entry.username} className="podium-avatar" />
                 <div className="mt-4 flex items-center justify-center gap-2">
                   {rank === 1 ? <Crown className="h-4 w-4" /> : <Medal className="h-4 w-4" />}
                   <span className="text-sm font-semibold uppercase tracking-[0.2em]">
@@ -125,7 +126,7 @@ export const TabRank = ({ activeUser, statsPayload, progressPercent }: TabRankPr
           {!currentUserVisible ? (
             <article className="ranking-row ranking-row-current">
               <div className="ranking-rank">#{statsPayload.tournament.rank}</div>
-              <img src={activeUser.avatar} alt="Profile avatar" className="ranking-avatar" />
+              <img src={getAllowedAvatar(activeUser.avatar)} alt="Profile avatar" className="ranking-avatar" />
               <div className="min-w-0 flex-1">
                 <p className="truncate font-semibold text-[#173126]">You</p>
                 <p className="text-sm text-[#4f6659]">{getLeagueName(activeUser)}</p>
@@ -146,7 +147,7 @@ export const TabRank = ({ activeUser, statsPayload, progressPercent }: TabRankPr
                 className={`ranking-row ${current ? "ranking-row-current" : ""}`}
               >
                 <div className="ranking-rank">#{index + 1}</div>
-                <img src={entry.avatar} alt={entry.username} className="ranking-avatar" />
+                <img src={getAllowedAvatar(entry.avatar)} alt={entry.username} className="ranking-avatar" />
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-semibold text-[#173126]">
                     {current ? "You" : entry.username}

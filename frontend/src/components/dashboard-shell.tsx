@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
   useTransition,
-  type ChangeEvent,
   type FormEvent,
 } from "react";
 import {
@@ -21,7 +20,6 @@ import {
   MessageCircleMore,
   Sparkles,
   Trophy,
-  Upload,
   X,
   type LucideIcon,
 } from "lucide-react";
@@ -40,6 +38,7 @@ import {
 } from "@/components/dashboard-utils";
 import { useAuth } from "@/context/auth-context";
 import { apiFetch } from "@/lib/api";
+import { UPLOADED_AVATARS, getAllowedAvatar } from "@/lib/avatar-presets";
 import type {
   AppUser,
   ChatMessage,
@@ -60,14 +59,6 @@ const getSessionTimingValue = () => {
   const offset = now.getTimezoneOffset();
   return new Date(now.getTime() - offset * 60_000).toISOString().slice(0, 16);
 };
-
-const PRESET_AVATARS = [
-  "/avatars/male-01.png",
-  "/avatars/male-02.png",
-  "/avatars/male-03.png",
-  "/avatars/female-01.png",
-  "/avatars/female-02.png",
-];
 
 const NAV_ITEMS: Array<{
   id: DashboardTab;
@@ -107,7 +98,7 @@ export const DashboardShell = () => {
   });
   const [chatInput, setChatInput] = useState("");
   const [profileNameDraft, setProfileNameDraft] = useState(profile?.username || "");
-  const [avatarDraft, setAvatarDraft] = useState(profile?.avatar || PRESET_AVATARS[0]);
+  const [avatarDraft, setAvatarDraft] = useState(getAllowedAvatar(profile?.avatar));
   const [coachTone, setCoachTone] = useState<CoachTone>(profile?.coachTone || "balanced");
   const [goalDraft, setGoalDraft] = useState(profile?.weeklyGoal || 5);
   const [isPending, startUiTransition] = useTransition();
@@ -168,7 +159,7 @@ export const DashboardShell = () => {
     }
 
     setProfileNameDraft(profile.username);
-    setAvatarDraft(profile.avatar);
+    setAvatarDraft(getAllowedAvatar(profile.avatar));
     setCoachTone(profile.coachTone);
     setGoalDraft(profile.weeklyGoal);
   }, [profile]);
@@ -331,29 +322,6 @@ export const DashboardShell = () => {
     }
   };
 
-  const handleAvatarFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-
-    if (!file) {
-      return;
-    }
-
-    if (file.size > 1024 * 1024) {
-      setDashboardError("Please upload a profile photo under 1MB.");
-      return;
-    }
-
-    const fileDataUrl = await new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(String(reader.result));
-      reader.onerror = () => reject(new Error("Unable to read that file."));
-      reader.readAsDataURL(file);
-    });
-
-    setAvatarDraft(fileDataUrl);
-    setDashboardError("");
-  };
-
   const handleCopyInviteLink = async () => {
     try {
       await navigator.clipboard.writeText(inviteLink);
@@ -408,7 +376,7 @@ export const DashboardShell = () => {
               aria-expanded={isProfileMenuOpen}
               aria-label="Open profile menu"
             >
-              <img src={activeUser.avatar} alt="Profile avatar" className="header-avatar" />
+              <img src={getAllowedAvatar(activeUser.avatar)} alt="Profile avatar" className="header-avatar" />
               <ChevronDown className="h-4 w-4 text-white/75" />
             </button>
             <div className="min-w-0">
@@ -563,19 +531,17 @@ export const DashboardShell = () => {
                   <span className="form-label">Profile photo</span>
                   <div className="flex items-center gap-4">
                     <img
-                      src={avatarDraft}
+                      src={getAllowedAvatar(avatarDraft)}
                       alt="Profile preview"
                       className="h-[5.5rem] w-[5.5rem] rounded-[26px] object-cover"
                     />
-                    <label className="secondary-button cursor-pointer">
-                      <Upload className="h-4 w-4" />
-                      Upload photo
-                      <input type="file" accept="image/*" className="hidden" onChange={handleAvatarFileChange} />
-                    </label>
+                    <p className="max-w-xs text-sm leading-7 text-[#617064]">
+                      Only the uploaded app avatars are available for profile selection.
+                    </p>
                   </div>
 
-                  <div className="mt-4 grid grid-cols-4 gap-3">
-                    {PRESET_AVATARS.map((avatar) => (
+                  <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    {UPLOADED_AVATARS.map((avatar) => (
                       <button
                         key={avatar}
                         type="button"

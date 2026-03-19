@@ -1,9 +1,15 @@
 import User from "../models/User.js";
+import { getAllowedAvatar, isAllowedAvatar } from "../utils/avatarPresets.js";
 
 const sanitizeUsername = (value) => value.trim().replace(/\s+/g, "");
 
 export const getCurrentUser = async (req, res) => {
   const user = await User.findOne({ userId: req.user.uid });
+
+  if (user && !isAllowedAvatar(user.avatar)) {
+    user.avatar = getAllowedAvatar(user.avatar);
+    await user.save();
+  }
 
   res.json({
     profileComplete: Boolean(user?.username && user?.avatar),
@@ -20,6 +26,10 @@ export const upsertProfile = async (req, res) => {
 
   if (!avatar || typeof avatar !== "string") {
     return res.status(400).json({ message: "Avatar is required" });
+  }
+
+  if (!isAllowedAvatar(avatar)) {
+    return res.status(400).json({ message: "Please choose one of the available avatars." });
   }
 
   const sanitizedUsername = sanitizeUsername(username);
@@ -47,7 +57,7 @@ export const upsertProfile = async (req, res) => {
       userId: req.user.uid,
       username: sanitizedUsername,
       usernameLower,
-      avatar,
+      avatar: getAllowedAvatar(avatar),
       weeklyGoal: Number(weeklyGoal) || 5,
       coachTone: coachTone || "balanced",
     },

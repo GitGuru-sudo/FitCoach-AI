@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import Workout from "../models/Workout.js";
+import { getAllowedAvatar } from "../utils/avatarPresets.js";
 import { getWeekWindow } from "../utils/date.js";
 import { requireCompletedProfile } from "../utils/profile.js";
 import { calculateStats } from "../utils/stats.js";
@@ -30,7 +31,7 @@ export const getStats = async (req, res) => {
     stats,
     user: {
       username: user.username,
-      avatar: user.avatar,
+      avatar: getAllowedAvatar(user.avatar),
       points: user.points,
       weeklyGoal: user.weeklyGoal,
       weeklyProgress: user.weeklyProgress,
@@ -38,7 +39,10 @@ export const getStats = async (req, res) => {
       coachTone: user.coachTone,
       dailyMotivation: user.dailyMotivation,
     },
-    leaderboard,
+    leaderboard: leaderboard.map((entry) => ({
+      ...entry.toJSON(),
+      avatar: getAllowedAvatar(entry.avatar),
+    })),
     tournament: {
       weekOf: currentWeek.key,
       rank,

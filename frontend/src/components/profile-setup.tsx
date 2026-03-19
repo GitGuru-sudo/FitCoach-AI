@@ -2,68 +2,20 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useState } from "react";
-import { Check, Upload } from "lucide-react";
+import { Check } from "lucide-react";
 
 import { useAuth } from "@/context/auth-context";
+import { UPLOADED_AVATARS, getAllowedAvatar } from "@/lib/avatar-presets";
 import type { CoachTone } from "@/types";
 
-const makeAvatarDataUrl = (label: string, background: string, accent: string) => {
-  const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
-      <defs>
-        <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
-          <stop offset="0%" stop-color="${background}" />
-          <stop offset="100%" stop-color="${accent}" />
-        </linearGradient>
-      </defs>
-      <rect width="160" height="160" rx="48" fill="url(#g)" />
-      <circle cx="80" cy="64" r="24" fill="rgba(255,255,255,0.88)" />
-      <path d="M42 126c8-20 27-30 38-30s30 10 38 30" fill="rgba(255,255,255,0.88)" />
-      <text x="80" y="148" font-size="18" font-family="Arial" text-anchor="middle" fill="rgba(7,16,15,0.72)">${label}</text>
-    </svg>
-  `;
-
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
-};
-
-const PRESET_AVATARS = [
-  makeAvatarDataUrl("Run", "#ff8f6b", "#f0c36e"),
-  makeAvatarDataUrl("Zen", "#0f6d62", "#7df0c4"),
-  makeAvatarDataUrl("Lift", "#34495e", "#9ec7ff"),
-  makeAvatarDataUrl("Swim", "#1657a5", "#79d6ff"),
-];
-
 export const ProfileSetup = () => {
-  const { firebaseUser, saveProfile } = useAuth();
+  const { saveProfile } = useAuth();
   const [username, setUsername] = useState("");
-  const [selectedAvatar, setSelectedAvatar] = useState(firebaseUser?.photoURL || PRESET_AVATARS[0]);
+  const [selectedAvatar, setSelectedAvatar] = useState(getAllowedAvatar());
   const [weeklyGoal, setWeeklyGoal] = useState(4);
   const [coachTone, setCoachTone] = useState<CoachTone>("balanced");
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
-
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-
-    if (!file) {
-      return;
-    }
-
-    if (file.size > 1024 * 1024) {
-      setError("Please upload an avatar under 1MB.");
-      return;
-    }
-
-    const fileDataUrl = await new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(String(reader.result));
-      reader.onerror = () => reject(new Error("Unable to read that file."));
-      reader.readAsDataURL(file);
-    });
-
-    setSelectedAvatar(fileDataUrl);
-    setError("");
-  };
 
   const handleSave = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -96,8 +48,8 @@ export const ProfileSetup = () => {
               Build the profile your streak will grow from.
             </h1>
             <p className="mt-5 text-base leading-8 text-stone-300">
-              Choose a globally unique username, pick an avatar, and set a weekly target that
-              feels ambitious but sustainable.
+              Choose a globally unique username, pick one of the uploaded avatars, and set a
+              weekly target that feels ambitious but sustainable.
             </p>
           </div>
 
@@ -121,14 +73,12 @@ export const ProfileSetup = () => {
                   alt="Selected avatar"
                   className="h-24 w-24 rounded-[28px] object-cover"
                 />
-                <label className="secondary-button cursor-pointer">
-                  <Upload className="h-4 w-4" />
-                  Upload
-                  <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-                </label>
+                <p className="max-w-xs text-sm leading-7 text-stone-300">
+                  Only the uploaded app avatars are available here.
+                </p>
               </div>
-              <div className="mt-5 grid grid-cols-4 gap-3">
-                {PRESET_AVATARS.map((avatar) => (
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {UPLOADED_AVATARS.map((avatar) => (
                   <button
                     key={avatar}
                     type="button"

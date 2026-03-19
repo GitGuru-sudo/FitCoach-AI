@@ -12,6 +12,10 @@ export const AuthPanel = () => {
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [localError, setLocalError] = useState("");
+  const isSignInMode = mode === "signin";
+
+  const getErrorCode = (error: unknown) =>
+    typeof error === "object" && error && "code" in error ? String(error.code) : "";
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,6 +29,14 @@ export const AuthPanel = () => {
         await signUpWithEmail(email, password);
       }
     } catch (error) {
+      const errorCode = getErrorCode(error);
+
+      if (errorCode === "auth/email-already-in-use") {
+        setMode("signin");
+        setLocalError("This email is already registered. Please sign in instead.");
+        return;
+      }
+
       setLocalError(error instanceof Error ? error.message : "Unable to complete authentication.");
     } finally {
       setSubmitting(false);
@@ -49,7 +61,21 @@ export const AuthPanel = () => {
       <div className="hero-orb hero-orb-left" />
       <div className="hero-orb hero-orb-right" />
       <main className="mx-auto grid min-h-screen max-w-7xl gap-10 px-6 py-10 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
-        <section className="flex flex-col justify-center">
+        <section className="relative flex flex-col justify-center">
+          <div className="mb-8 flex justify-end md:hidden">
+            <button
+              type="button"
+              onClick={handleGoogleSignIn}
+              disabled={submitting}
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur"
+            >
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-[#12352d]">
+                G
+              </span>
+              Google
+            </button>
+          </div>
+
           <p className="eyebrow">FitCoach AI</p>
           <h1 className="mt-5 max-w-2xl text-5xl font-semibold tracking-tight text-balance md:text-7xl">
             AI coaching, gamified workouts, and daily momentum in one dashboard.
@@ -97,7 +123,7 @@ export const AuthPanel = () => {
                 className="chip"
                 onClick={() => setMode((current) => (current === "signin" ? "signup" : "signin"))}
               >
-                {mode === "signin" ? "Need an account?" : "Have an account?"}
+                {isSignInMode ? "Create account" : "Back to sign in"}
               </button>
             </div>
 
@@ -136,25 +162,29 @@ export const AuthPanel = () => {
               <button type="submit" disabled={submitting} className="primary-button w-full">
                 {submitting
                   ? "Working..."
-                  : mode === "signin"
+                  : isSignInMode
                     ? "Sign In"
                     : "Create Account"}
               </button>
             </form>
 
-            <div className="my-6 flex items-center gap-4 text-sm text-stone-400">
+            <div className="my-6 hidden items-center gap-4 text-sm text-stone-400 md:flex">
               <div className="h-px flex-1 bg-white/10" />
               <span>or continue with</span>
               <div className="h-px flex-1 bg-white/10" />
             </div>
 
-            <button type="button" onClick={handleGoogleSignIn} className="secondary-button w-full">
+            <button
+              type="button"
+              onClick={handleGoogleSignIn}
+              className="secondary-button hidden w-full md:inline-flex"
+            >
               Continue with Google
               <ArrowRight className="h-4 w-4" />
             </button>
 
             <p className="mt-6 text-sm leading-7 text-stone-400">
-              After your first login, you&apos;ll set a unique username, choose an avatar, and
+              After your first login, you&apos;ll sign in once, choose one of the app avatars, and
               lock in your weekly goal before entering the dashboard.
             </p>
           </div>
