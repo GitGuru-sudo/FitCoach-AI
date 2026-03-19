@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#006d3e",
+              "on-tertiary-fixed": "#231b00",
+              "surface-container-highest": "#e4e4cc",
+              "surface-dim": "#dbdcc3",
+              "surface-tint": "#006d3e",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#ffd64c",
+              "on-primary-fixed": "#00210f",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#ffdad8",
+              "outline-variant": "#bdcabe",
+              "inverse-primary": "#73db9a",
+              "tertiary-fixed-dim": "#eec200",
+              "on-background": "#1b1d0e",
+              "on-primary-container": "#006d3e",
+              "tertiary-fixed": "#ffe083",
+              "secondary-container": "#fe7676",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#00522d",
+              "background": "#fbfbe2",
+              "secondary": "#a83639",
+              "surface-bright": "#fbfbe2",
+              "tertiary": "#735c00",
+              "primary-fixed": "#8ff8b4",
+              "on-tertiary-container": "#735c00",
+              "on-secondary-fixed": "#410006",
+              "surface-container": "#efefd7",
+              "on-tertiary-fixed-variant": "#574500",
+              "primary-fixed-dim": "#73db9a",
+              "on-surface-variant": "#3e4a40",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-secondary": "#ffffff",
+              "surface-container-low": "#f5f5dc",
+              "surface-variant": "#e4e4cc",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303221",
+              "on-secondary-fixed-variant": "#881d24",
+              "inverse-on-surface": "#f2f2d9",
+              "secondary-fixed-dim": "#ffb3b0",
+              "on-surface": "#1b1d0e",
+              "primary-container": "#86efac",
+              "on-secondary-container": "#720b17",
+              "surface-container-high": "#eaead1",
+              "surface": "#fbfbe2",
+              "outline": "#6e7a70"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #fbfbe2;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#1b1d0e] dark:bg-[#0a0a05] shadow-[0_20px_40px_rgba(27,29,14,0.06)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Close up professional male headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzk4zxE5IqsJFcqScd0Z97Uji2IOIW8RJb17I4Y2vWqMsAeQlgqvjjiAwdgEAOCiGUPUPPa_-cCx_RvvLrXCQrplee6taKL7J6Zsza78TTS2wSK3cesVJ7hYkhSgng9GEpl4xBWNjF59L2CZfaKOSQIhcQPDasAJd1_LNMmLrDVZMQ-eC8xIH2GSgrb3RGEoAK75MoJ3GxogwkoqKIg4pEVXamjQyQe5lxYkOVqxr1qrYAiqXYK85M2-BFj9wG3XZ38uDBXdpx6hU"/>
+</div>
+</div>
+<h1 class="font-manrope font-bold tracking-tight text-white text-xl">Performance</h1>
+<button class="text-[#006d3e] dark:text-[#86efac] hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="card_membership">card_membership</span>
+</button>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto">
+<!-- Hero Ranking Card: The "Editorial" Voice -->
+<section class="mb-10">
+<div class="bg-inverse-surface rounded-xl p-8 relative overflow-hidden text-white">
+<div class="absolute -right-10 -top-10 w-48 h-48 bg-primary rounded-full blur-3xl opacity-20"></div>
+<div class="relative z-10">
+<p class="font-label uppercase text-[10px] tracking-widest font-bold text-primary-fixed mb-2">Current Standing</p>
+<div class="flex items-end gap-2 mb-6">
+<h2 class="text-6xl font-extrabold tracking-tighter">#14</h2>
+<span class="text-primary-fixed mb-2 font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                            +3
+                        </span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white/10 backdrop-blur-md rounded-lg p-4">
+<p class="text-[10px] uppercase tracking-widest opacity-70 mb-1">Total XP</p>
+<p class="text-xl font-bold">12,450</p>
+</div>
+<div class="bg-white/10 backdrop-blur-md rounded-lg p-4">
+<p class="text-[10px] uppercase tracking-widest opacity-70 mb-1">League</p>
+<p class="text-xl font-bold text-tertiary-fixed">Emerald</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Podium: High-end Asymmetric Layout -->
+<section class="mb-14">
+<h3 class="font-headline font-extrabold text-2xl tracking-tight mb-8 px-2">Top Performers</h3>
+<div class="flex items-end justify-center gap-4 h-64">
+<!-- 2nd Place -->
+<div class="flex-1 flex flex-col items-center">
+<div class="w-16 h-16 rounded-full border-4 border-surface-container-highest overflow-hidden mb-3">
+<img alt="Runner up avatar" class="w-full h-full object-cover" data-alt="Portrait of a smiling woman athlete" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6z4I0w-t3DbPXFHAFv1ruAf-cQMqwK8noCQkLnwjhhbZTuGyPFCMuKjICdY768Vxa_2cCEurOhJmDJKs8YIVIa3Z0mGEbLqqnxQrisrcQnrENY8z-q2fHjx3Xgi0ebebJ-QlBYgkko0cEXdLi2HbVEHm3BrOM5pqSMlhP5PA2PPsq1UKuonLQleDbLlmlf-MrBqD8kSN107TFwTMQW_8v8x5MAeqsbX3xiVwrWElfjPzy8doNBKdnGtx3SA0ncTQlzHj8kqcVRN4"/>
+</div>
+<div class="w-full bg-surface-container-high h-24 rounded-t-lg flex flex-col items-center justify-center p-2 relative">
+<div class="absolute -top-4 bg-surface-container-highest px-3 py-1 rounded-full text-[10px] font-bold">2nd</div>
+<p class="text-xs font-bold text-center truncate w-full">S. Miller</p>
+<p class="text-[10px] text-primary font-bold">18.2k</p>
+</div>
+</div>
+<!-- 1st Place -->
+<div class="flex-1 flex flex-col items-center scale-110 z-10">
+<div class="relative mb-3">
+<div class="w-20 h-20 rounded-full border-4 border-tertiary-fixed overflow-hidden">
+<img alt="Winner avatar" class="w-full h-full object-cover" data-alt="Portrait of a focused man in workout gear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoMdmc8-f3qTeTTg4NFiXjQIhRv-joMx2mag4vcmpLEhg96bLWXDzXbTMORfioEvIMrrDZZddeOJm3Y65iayxkpVpeLNHVivnJiGezoy6lNGZglUiJ-85pWpPSMCms_CILcaUc3typqs6H8-T2L8Zm5rZEnsvQkKMy5i6dhHGdzScPsCErXqSZpb_FSF4_39_rNTQETH3IitQP7J-54nkCBB42l1h7aHuTqo4blwqY-gq_S75OzM96qEBlXyT51zJbeOwikOWFtys"/>
+</div>
+<div class="absolute -top-3 -right-3 bg-tertiary-container text-on-tertiary-container w-8 h-8 rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-lg" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+</div>
+<div class="w-full bg-inverse-surface h-36 rounded-t-lg flex flex-col items-center justify-center p-2 relative shadow-xl">
+<div class="absolute -top-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-bold text-white">CHAMPION</div>
+<p class="text-sm font-bold text-white text-center truncate w-full">D. Vane</p>
+<p class="text-xs text-primary-fixed font-bold">24.5k</p>
+</div>
+</div>
+<!-- 3rd Place -->
+<div class="flex-1 flex flex-col items-center">
+<div class="w-16 h-16 rounded-full border-4 border-surface-container overflow-hidden mb-3">
+<img alt="Third place avatar" class="w-full h-full object-cover" data-alt="Portrait of a woman at the gym" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY5r0dSyhnobBSF8P6OisbHaV3zBSKqP_8INznfY3piSF-wbdxs1vA_mpl5YvWEhlD0uF3HZ8SpBM7e3gNl53vn1fkOBtbXzFy-scho1GMRGNB7OEA6CNJZQF0cdDEYjT-LbJZnQgvHreun_rOmErIwM24TkalsgV5FAPQxmj7iQnN1rnktJOFHtRqq6R3dG62wTnYHCDfUqLljRDWe7syQxfGKAXXhMFxPwp0DnXvdKNW6weImonYynvkOmFjd_IaTD5UL3IASng"/>
+</div>
+<div class="w-full bg-surface-container h-16 rounded-t-lg flex flex-col items-center justify-center p-2 relative">
+<div class="absolute -top-4 bg-surface-container px-3 py-1 rounded-full text-[10px] font-bold">3rd</div>
+<p class="text-xs font-bold text-center truncate w-full">M. Chen</p>
+<p class="text-[10px] text-primary font-bold">15.9k</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Global Rankings List: No-Line Rule -->
+<section class="space-y-4">
+<div class="flex justify-between items-center px-2 mb-4">
+<h3 class="font-headline font-bold text-lg">Global Rankings</h3>
+<button class="text-primary font-bold text-xs uppercase tracking-widest">Filter</button>
+</div>
+<!-- List Item: User (Highlighted) -->
+<div class="bg-primary-container rounded-lg p-5 flex items-center gap-4 shadow-sm border border-primary/10">
+<span class="text-lg font-extrabold text-on-primary-container w-8">14</span>
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Current user avatar" class="w-full h-full object-cover" data-alt="Close up professional male headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKg3Tw-y3yDv7j038gAlDf2hiJirVfTGqD5btVT28Q4RV8WFJIdRf608LvZwD4HzK9D-aEAKcA4hhe01dCll5ET2ovNpxw6KhuzjcIWpm_fbJVMgRZUm9betGobL97A5lW38EvTE1cfNboXae1ctKqKmuksNQSzT9N-O-p-N-BRkppAr1pRxD3M8ZBKge9NGDzYqj8rC5X-0qT3czrHgg3YTFDb2LoWvGB-BdY5Gec2FCtx-NKEHfqg5p9SWFA_jveOwjsYebq-Iw"/>
+</div>
+<div class="flex-grow">
+<p class="font-bold text-on-primary-container">You (Alex Johnson)</p>
+<p class="text-xs opacity-70">United Kingdom</p>
+</div>
+<p class="font-extrabold text-primary">12.4k</p>
+</div>
+<!-- List Item 15 -->
+<div class="bg-surface-container-lowest rounded-lg p-5 flex items-center gap-4">
+<span class="text-lg font-bold text-outline w-8">15</span>
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 grayscale">
+<img alt="Player 15 avatar" class="w-full h-full object-cover" data-alt="Portrait of a young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4-jidD0ddjYmZaq4Sie7LHnqC-PdInaKUFL6ZJeED8wbnFWjoV10Hd662c2dx4nyVgxAXSVu0OYawar0Z9c1Y6d9nRTUQVI36kG1RLh6v3-jbZMygFVrXI0BtMv0YvwmU5d-nSJHGESqTex8HUVl4vi8AFuzQdcacdMH4GwpgczH7q6EIixGd4mfcEEonHlpB5OTIpJpjW8XEK3EYvrHhosrYeuDML6_WFmN3Vd8clUtMDzUU-jQDOAB67DAcj2A1_0kH90k2mvs"/>
+</div>
+<div class="flex-grow">
+<p class="font-bold">Jordan Key</p>
+<p class="text-xs text-on-surface-variant">Canada</p>
+</div>
+<p class="font-bold">11.9k</p>
+</div>
+<!-- List Item 16 -->
+<div class="bg-surface-container-low rounded-lg p-5 flex items-center gap-4">
+<span class="text-lg font-bold text-outline w-8">16</span>
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 grayscale">
+<img alt="Player 16 avatar" class="w-full h-full object-cover" data-alt="Portrait of a woman looking sideways" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8TbrTofeXYQYMMAxYR556D48sR8ci6sTGtH07gLA7vacep1d3iXq5XMUBZ4uY8vNBsQszR-YekJyXR-7FylLsAgD44dbp5jZw3qQbdp0koIk03FTP7RNapcCDEdqH_dDMzfcHpijYdX1IgFYbjwBPcVKwedmQkS3H0nRbBI4U_TuS5XD_dChjps2nRdtximkiroJiORar-zOXHaXT6YjSl72-WuYJYOlJ9eZH--7xgNY2bOEDdukbJEwD5lUPrYN93hgCRztJxvk"/>
+</div>
+<div class="flex-grow">
+<p class="font-bold">Eliza Thorne</p>
+<p class="text-xs text-on-surface-variant">Australia</p>
+</div>
+<p class="font-bold">11.2k</p>
+</div>
+<!-- List Item 17 -->
+<div class="bg-surface-container-lowest rounded-lg p-5 flex items-center gap-4">
+<span class="text-lg font-bold text-outline w-8">17</span>
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 grayscale">
+<img alt="Player 17 avatar" class="w-full h-full object-cover" data-alt="Portrait of a bearded man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArgVT2rBgAbKU6GqmcIH8jmv4kjayWOwAwfPOZTwdXy7MPv03Hj27IYm5Fo55Q_17nxtqiPMbXG0EN2XPj2aiDyjr77JvqdbSiP9m6jp6xUkOrtNtCjQNjQZpdr0M5JGXUpZCkv0liHw45X-yyYayNKc0CLoknhrzwfiw8Job3YragIPldKpylZp38ZH3udau92paFIoF9Vv4c11dDfpI-qxbyHCQ0iGUVfQ-gvT1-yP7awGkCiWcXjvASUoJdKO1aGWaIcHe--XQ"/>
+</div>
+<div class="flex-grow">
+<p class="font-bold">Marcus Wu</p>
+<p class="text-xs text-on-surface-variant">Germany</p>
+</div>
+<p class="font-bold">10.8k</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fbfbe2] dark:bg-[#1b1d0e] rounded-t-[3rem] transition-all">
+<!-- Dashboard -->
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] p-2 hover:text-[#006d3e] transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-manrope uppercase text-[10px] tracking-widest font-bold">Dashboard</span>
+</a>
+<!-- Workouts -->
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] p-2 hover:text-[#006d3e] transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="fitness_center">fitness_center</span>
+<span class="font-manrope uppercase text-[10px] tracking-widest font-bold">Workouts</span>
+</a>
+<!-- AI Cat -->
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] p-2 hover:text-[#006d3e] transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="smart_toy">smart_toy</span>
+<span class="font-manrope uppercase text-[10px] tracking-widest font-bold">AI Cat</span>
+</a>
+<!-- Rank (Active) -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#006d3e] to-[#86efac] text-white rounded-full p-3 scale-110 -translate-y-2 shadow-lg active:scale-90 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="leaderboard" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-manrope uppercase text-[10px] tracking-widest font-bold">Rank</span>
+</a>
+</nav>
+</body></html>

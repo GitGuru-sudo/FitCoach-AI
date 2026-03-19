@@ -1,0 +1,12 @@
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+frontend/.next/
+.next/
+backend/.env
+frontend/.env.local
+**/.env
+**/.env.local
+*.log
+*.tmp
+*.temp

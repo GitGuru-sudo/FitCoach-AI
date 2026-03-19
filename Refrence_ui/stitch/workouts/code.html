@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Performance - Workouts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#006d3e",
+              "on-tertiary-fixed": "#231b00",
+              "surface-container-highest": "#e4e4cc",
+              "surface-dim": "#dbdcc3",
+              "surface-tint": "#006d3e",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#ffd64c",
+              "on-primary-fixed": "#00210f",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#ffdad8",
+              "outline-variant": "#bdcabe",
+              "inverse-primary": "#73db9a",
+              "tertiary-fixed-dim": "#eec200",
+              "on-background": "#1b1d0e",
+              "on-primary-container": "#006d3e",
+              "tertiary-fixed": "#ffe083",
+              "secondary-container": "#fe7676",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#00522d",
+              "background": "#fbfbe2",
+              "secondary": "#a83639",
+              "surface-bright": "#fbfbe2",
+              "tertiary": "#735c00",
+              "primary-fixed": "#8ff8b4",
+              "on-tertiary-container": "#735c00",
+              "on-secondary-fixed": "#410006",
+              "surface-container": "#efefd7",
+              "on-tertiary-fixed-variant": "#574500",
+              "primary-fixed-dim": "#73db9a",
+              "on-surface-variant": "#3e4a40",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-secondary": "#ffffff",
+              "surface-container-low": "#f5f5dc",
+              "surface-variant": "#e4e4cc",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303221",
+              "on-secondary-fixed-variant": "#881d24",
+              "inverse-on-surface": "#f2f2d9",
+              "secondary-fixed-dim": "#ffb3b0",
+              "on-surface": "#1b1d0e",
+              "primary-container": "#86efac",
+              "on-secondary-container": "#720b17",
+              "surface-container-high": "#eaead1",
+              "surface": "#fbfbe2",
+              "outline": "#6e7a70"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#1b1d0e] dark:bg-[#0a0a05] shadow-[0_20px_40px_rgba(27,29,14,0.06)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a fit athlete" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw1VqSBszdU2XepdJUcddV_Z3_2oXhYKyk9zjl4Yfc3ANASeq0G0RANKOeSafrahrThRasMlBiFAFYWCnEaSQk_BMk8iwPSC-CIrv9iw70v6FY0V4reOMZ2WajoCjbESw_HaUFXziBqn6XpTSZLnZcQjDEluIjHa5VnMPfGlCLo6aPXRGq50KcnATmbt1Um3suOxNvLMf3FC8M7wInhiH1yere760tXSf7IRDKwWJgJNyEmggi1v45_lV4A6QZXF00ktf9g9bytnk"/>
+</div>
+<span class="font-manrope font-bold tracking-tight text-white text-lg">Performance</span>
+</div>
+<button class="text-[#006d3e] dark:text-[#86efac] hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="card_membership">card_membership</span>
+</button>
+</nav>
+<main class="pt-24 px-6 space-y-10">
+<!-- Hero Section: Intentional Asymmetry -->
+<header class="relative overflow-hidden bg-inverse-surface rounded-xl p-8 flex flex-col justify-end min-h-[220px]">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/30 to-transparent pointer-events-none"></div>
+<div class="relative z-10 space-y-2">
+<span class="font-label text-primary-fixed-dim uppercase tracking-widest text-xs font-bold">Today's Focus</span>
+<h1 class="font-headline text-white text-4xl font-extrabold tracking-tight leading-none">Hypertrophy<br/>&amp; Power</h1>
+<p class="text-surface-container-highest/70 text-sm max-w-[200px] mt-2">68 minutes of high-intensity functional training.</p>
+</div>
+<div class="absolute top-6 right-6">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-3 rounded-full font-bold shadow-lg flex items-center gap-2 -rotate-3 hover:rotate-0 transition-transform">
+<span class="material-symbols-outlined" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                    START
+                </button>
+</div>
+</header>
+<!-- Disciplines: Bento Style -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h2 class="font-headline text-2xl font-bold tracking-tight">Disciplines</h2>
+<span class="font-label text-xs text-tertiary font-bold tracking-widest uppercase">Explore All</span>
+</div>
+<div class="grid grid-cols-6 grid-rows-2 gap-4 h-[400px]">
+<!-- Yoga / Mobility -->
+<div class="col-span-3 row-span-2 bg-surface-container-lowest rounded-lg p-6 relative flex flex-col justify-between overflow-hidden">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-tertiary mb-4" data-icon="self_improvement">self_improvement</span>
+<h3 class="font-headline text-xl font-bold leading-tight">Mobility &amp;<br/>Flow</h3>
+</div>
+<div class="absolute -bottom-4 -right-4 w-32 h-32 opacity-20 rotate-12">
+<img alt="Yoga icon" class="w-full h-full object-contain" data-alt="Minimalist abstract yoga pose illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeSPVavgEqbxFe-IUI9Z61V0MtcynssygtjSJWgL9w3dKofbW1quAUkIhDvhKUMYrW3F9ZKR88lTAyBjiOlw6s3XUBskU4NLPpEYsQDfVsJx8_qCpVyJhbLlJ4DghBi-CYaFAzNDvKs5On-LPIJMC6We0TPPytbBf9Ar-FrwLpFKdhO38yKbxXfzgwL--G87eEVMgVmUwUqQ9rPkBoBTT5E5xH_qf7WJEhQRwuQTI7-bitMd5MGZBwExu4eR_C0L74K6pECOmwf3E"/>
+</div>
+<span class="text-xs font-bold text-outline uppercase tracking-tighter">12 Routines</span>
+</div>
+<!-- Strength -->
+<div class="col-span-3 row-span-1 bg-primary-container/20 rounded-lg p-6 flex flex-col justify-between border border-primary/10">
+<div class="flex justify-between items-start">
+<h3 class="font-headline text-lg font-bold">Strength</h3>
+<span class="material-symbols-outlined text-primary" data-icon="fitness_center">fitness_center</span>
+</div>
+<div class="flex gap-2">
+<div class="w-8 h-1 bg-primary rounded-full"></div>
+<div class="w-8 h-1 bg-primary/20 rounded-full"></div>
+<div class="w-8 h-1 bg-primary/20 rounded-full"></div>
+</div>
+</div>
+<!-- Cardio -->
+<div class="col-span-3 row-span-1 bg-secondary-container/20 rounded-lg p-6 flex flex-col justify-between border border-secondary/10">
+<div class="flex justify-between items-start">
+<h3 class="font-headline text-lg font-bold">Endurance</h3>
+<span class="material-symbols-outlined text-secondary" data-icon="speed">speed</span>
+</div>
+<p class="text-[10px] font-bold text-on-secondary-container uppercase tracking-widest">New: Trail Run AI</p>
+</div>
+</div>
+</section>
+<!-- Daily Routines: Stacked Editorial Style -->
+<section class="space-y-6">
+<h2 class="font-headline text-2xl font-bold tracking-tight">Daily Routines</h2>
+<div class="space-y-8">
+<!-- Routine 1 -->
+<div class="flex gap-6 group">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container-low rounded-lg overflow-hidden">
+<img alt="Morning routine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Morning sunrise view from a gym window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXcH3G4Kx0BK7YuZ4tS2u0xoXyhnSpIGKbCREQBTcqgzq2j_NKcNa3K906iBFY02uT0uoJU9YPjlH6hrsjCeQJ3-XxZbJOu04BDL4X1MmkUPT7h_1zJS4s2CTAYPdhIwKTKjc8B3hq-rcQ-wA18nWaLRZQDS-5WYUdR5WBXhS8nV50-NEiQoj2UA5i1CHpxb5_OyNEBxi4aUdBe2ipwYA7BKAI-h-Eovezv1mrVojh8vp48PyC1vr4NvT4Jd0IA5nqIs_HBz9VBPc"/>
+</div>
+<div class="flex flex-col justify-center flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label text-[10px] text-outline font-bold tracking-widest uppercase">Morning Prep • 15m</span>
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h4 class="font-headline text-lg font-bold leading-tight mb-2">Sun Salutation &amp; Core Ignition</h4>
+<div class="flex gap-4">
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span> Low Intensity
+                            </span>
+</div>
+</div>
+</div>
+<!-- Routine 2 -->
+<div class="flex gap-6 group">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container-low rounded-lg overflow-hidden">
+<img alt="Power routine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Heavy dumbbells on a dark gym floor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC6-h9DtPzJuIRI_TEozPGhDu1WfcvSl-Qw9ySps4ZklW-882cLGGPy5DFYjzBIG9dQ4t31frLPg3YWUqhWwFsTPx_RSyfiHYaN5xICxhCX3m0n30PrHkzNACPmvCqRn5-WheRhsSvQZo6NBafeCD7Uj1s3_yMv8z7VTbAzfYxlc5M63vRzWPOWqpDiBjUOBavfHyQts8Btl82vWCanM7C-rDxo0pz4zXkMeypl5-yUQAvqamoUiq17MLq1M73i19Jsr_D57F8PQo"/>
+</div>
+<div class="flex flex-col justify-center flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label text-[10px] text-outline font-bold tracking-widest uppercase">Main Event • 45m</span>
+</div>
+<h4 class="font-headline text-lg font-bold leading-tight mb-2">Push Day: Advanced Compound</h4>
+<div class="flex gap-4">
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span> High Intensity
+                            </span>
+</div>
+</div>
+</div>
+<!-- Routine 3 -->
+<div class="flex gap-6 group">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container-low rounded-lg overflow-hidden">
+<img alt="Recovery routine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Foam roller and a water bottle on a mat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwse9I0SP2QZsD8kPBITpIrkXNZ9SozWs0NrS_d3wbJv8On9OH9oQb3t7smFpLnGEuuLKh725EmtOBHhbH0YMdmIc5vHqS_bw6z8vegMqSxs6BYqz1UGnhyrTvxUjJdBkoT8GU4YYXO6epqy1ZxGKKbmOV1L0sO8ZnACVtgKwB05u_zpz8xp3HE4EC6-hp2AU9Hn7gtIIFkslE_K7kabrCfkzTR88XlfWQ7bTD9Sh-yoG4Lf_-j0q5Oc36eqrKPjwQOrBKvzxEKx8"/>
+</div>
+<div class="flex flex-col justify-center flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label text-[10px] text-outline font-bold tracking-widest uppercase">Recovery • 20m</span>
+</div>
+<h4 class="font-headline text-lg font-bold leading-tight mb-2">Deep Tissue Release &amp; Chill</h4>
+<div class="flex gap-4">
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span> Restorative
+                            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fbfbe2] dark:bg-[#1b1d0e] rounded-t-[3rem] flat no shadows">
+<!-- Dashboard -->
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] p-2 hover:text-[#006d3e] transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-manrope uppercase text-[10px] tracking-widest font-bold mt-1">Dashboard</span>
+</a>
+<!-- Workouts (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#006d3e] to-[#86efac] text-white rounded-full p-3 scale-110 -translate-y-2 shadow-lg active:scale-90 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="fitness_center" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+<span class="font-manrope uppercase text-[10px] tracking-widest font-bold mt-1">Workouts</span>
+</a>
+<!-- AI Cat -->
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] p-2 hover:text-[#006d3e] transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-manrope uppercase text-[10px] tracking-widest font-bold mt-1">AI Cat</span>
+</a>
+<!-- Rank -->
+<a class="flex flex-col items-center justify-center text-[#3e4a40] dark:text-[#bdcabe] p-2 hover:text-[#006d3e] transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-manrope uppercase text-[10px] tracking-widest font-bold mt-1">Rank</span>
+</a>
+</nav>
+</body></html>
