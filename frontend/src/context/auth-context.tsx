@@ -11,6 +11,7 @@ import {
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  getRedirectResult,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -81,6 +82,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       );
       return;
     }
+
+    // Process redirect result to catch any errors from the redirect flow
+    getRedirectResult(auth).catch((error) => {
+      setAuthError(error.message || "Failed to complete redirect login");
+    });
 
     const unsubscribe = onAuthStateChanged(auth, async (nextUser) => {
       setFirebaseUser(nextUser);
